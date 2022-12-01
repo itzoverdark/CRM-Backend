@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -25,7 +26,12 @@ var customers = []Customer{
 
 func getCustomers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
-	json.NewEncoder(w).Encode(customers)
+	if len(customers) > 0 {
+		json.NewEncoder(w).Encode(customers)
+		return
+	}
+	w.WriteHeader(404)
+	w.Write([]byte(`{"message": "No customers available"}`))
 }
 
 func deleteCustomer(w http.ResponseWriter, r *http.Request) {
@@ -33,12 +39,15 @@ func deleteCustomer(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
 	for index, customer := range customers {
-		if customer.ID == params["id"] {
+		if len(params["id"]) > 0 && customer.ID == params["id"] {
 			customers = append(customers[:index], customers[index+1:]...)
-			break
+			json.NewEncoder(w).Encode(customer)
+			return
 		}
 	}
-	json.NewEncoder(w).Encode(customers)
+
+	w.WriteHeader(404)
+	w.Write([]byte(`{"message": "Customer does not exist"}`))
 
 }
 func getCustomer(w http.ResponseWriter, r *http.Request) {
@@ -46,35 +55,34 @@ func getCustomer(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
 	for _, customer := range customers {
-		if customer.ID == params["id"] {
+		if len(params["id"]) > 0 && customer.ID == params["id"] {
 			json.NewEncoder(w).Encode(customer)
 			return
 		}
 	}
+
+	w.WriteHeader(404)
+	w.Write([]byte(`{"message": "Customer does not exist"}`))
+
 }
 
 func addCustomer(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("content-type", "application/json")
-
+	w.Header().Set("Content-type", "application/json")
 	var customer Customer
 	json.NewDecoder(r.Body).Decode(&customer)
-	params := mux.Vars(r)["id"]
-	for _, customer := range customers {
-		if customer.ID == params {
-			json.NewEncoder(w).Encode(&customer)
-		}
-	}
+	customer.ID = strconv.Itoa(len(customers) + 1)
+	w.WriteHeader(201)
 	customers = append(customers, customer)
 	json.NewEncoder(w).Encode(customer)
 
 }
+
 func updateCustomer(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("content-type", "application/json")
 	params := mux.Vars(r)
 
 	for index, customer := range customers {
 		if customer.ID == params["id"] {
-
 			customers = append(customers[:index], customers[index+1:]...)
 			var customer Customer
 			json.NewDecoder(r.Body).Decode(&customer)
@@ -84,6 +92,9 @@ func updateCustomer(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+
+	w.WriteHeader(404)
+	w.Write([]byte(`{"message": "Customer does not exist"}`))
 
 }
 
