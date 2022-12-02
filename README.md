@@ -10,8 +10,10 @@ Since this project doesn't have a user interface for users to interact with, use
 							
 - For the gorilla/mux package to work, you have to install it first, to do so, you have to type this into the terminal:
  "go mod init" to create a go.mod file. Example usage:
-        'go mod init example.com/m' to initialize a v0 or v1 module.
-        'go mod init example.com/m/v2' to initialize a v2 module.
+ 
+        "go mod init example.com/m" to initialize a v0 or v1 module.
+	
+        "go mod init example.com/m/v2" to initialize a v2 module.
 	
   Then you can install the package by simply typing "go get github.com/gorilla/mux".
 
