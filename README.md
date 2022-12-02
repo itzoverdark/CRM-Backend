@@ -15,9 +15,9 @@ Since this project doesn't have a user interface for users to interact with, use
 	
         "go mod init example.com/m/v2" to initialize a v2 module.
 	
-  Then you can install the package by simply typing: 
+- Then you can install the package by simply typing: 
   
-  	"go get github.com/gorilla/mux".
+  	"go get github.com/gorilla/mux"
 
 
 							   LAUNCH
