@@ -1,30 +1,34 @@
-# CRM-Backend
+# Udacity: CRM-Backend
 
-							DESCRIPTION
+						
+## Description
+
 
 This is a build of the backend (i.e., server-side portion) of a CRM application. 
 While the server is on and active, users will be able to make HTTP requests to the server to perform CRUD operations.
 Since this project doesn't have a user interface for users to interact with, users will be largely interacting with the project via Postman (or cURL).
 							
-							INSTALLATION
-							
-- For the gorilla/mux package to work, you have to install it first, to do so, you have to type this into the terminal:
- "go mod init" to create a go.mod file. Example usage:
+
+## Installation Instructions
+
+For the gorilla/mux package to work, you have to install it first, to do so, you have to type this into the terminal:
+
+ `go mod init` to create a go.mod file. Example usage:
  
-        "go mod init example.com/m" to initialize a v0 or v1 module.
+        `go mod init example.com/m` to initialize a v0 or v1 module.
 	
-        "go mod init example.com/m/v2" to initialize a v2 module.
+        `go mod init example.com/m/v2` to initialize a v2 module.
 	
-- Then you can install the package by simply typing: 
+Then you can install the package by simply typing: 
   
-  	"go get github.com/gorilla/mux"
+  	`go get github.com/gorilla/mux`
 
 
-							   LAUNCH
+## Launch
 							   
-- The application only requires a simple "go run" command to launch.
+- The application only requires a simple `go run` command to launch.
 							
-							   USAGE
+## Usage
 
 - When you send a simple "GET" request to "localhost:3000", you will be able to see all the available paths.
 
