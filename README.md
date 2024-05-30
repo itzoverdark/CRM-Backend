@@ -1,3 +1,4 @@
+
 # Udacity: CRM-Backend
 
 						
@@ -11,22 +12,26 @@ Since this project doesn't have a user interface for users to interact with, use
 
 ## Installation Instructions
 
-For the gorilla/mux package to work, you have to install it first, to do so, you have to type this into the terminal:
+**Clone the repository**:
 
-`go mod init` to create a go.mod file. Example usage:
+```bash
+ git clone https://github.com/yourusername/yourrepository.git 
+```
+**Ensure Go is installed**:
+ * Make sure you have Go installed on your machine. You can download and install Go from the [official website](https://golang.org/dl/). 
  
- `go mod init example.com/m` to initialize a v0 or v1 module.
-	
- `go mod init example.com/m/v2` to initialize a v2 module.
-	
-Then you can install the package by simply typing: 
-
- `go get github.com/gorilla/mux`
-
-
+**Download dependencies**:
+ - Run the following command to download the necessary dependencies specified in the `go.mod` file.
+ ```bash
+go mod tidy
+ ```
+ 
 ## Launch
 							   
-- The application only requires a simple `go run` command to launch.
+- The application only requires a simple `go run` command to launch:
+```bash
+go run main.go
+ ```
 							
 ## Usage
 
