@@ -15,7 +15,7 @@ Since this project doesn't have a user interface for users to interact with, use
 **Clone the repository**:
 
 ```bash
- git clone https://github.com/yourusername/yourrepository.git 
+git clone git@github.com:itzoverdark/CRM-Backend.git 
 ```
 **Ensure Go is installed**:
  * Make sure you have Go installed on your machine. You can download and install Go from the [official website](https://golang.org/dl/). 
