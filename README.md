@@ -1,5 +1,5 @@
 
-# Udacity: CRM-Backend
+# CRM-Backend
 
 						
 ## Description
